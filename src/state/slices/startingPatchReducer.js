@@ -23,6 +23,23 @@ const startingPatchSlice = createSlice({
     },
 
     reducers: {
+        SetStartingDate: (state = initialState, action) => {
+            const date = new Date()
+            
+            return {
+                ...state,
+
+                timestamp: {
+                    day: date.getUTCDate(),
+                    month: date.getUTCMonth(),
+                    year: date.getFullYear(),
+
+                    hour: date.getUTCHours(),
+                    minute: date.getUTCMinutes()
+                },
+            };
+        },
+
         SetStartingPatch: (state = initialState, action) => {
             const date = new Date(
                 bannerDuration.getDate(
