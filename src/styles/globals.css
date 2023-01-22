@@ -1,4 +1,64 @@
-:root {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply font-sans;
+    @apply text-Vichyssoise;
+    background-size: fit !important;
+    background-repeat: no-repeat !important;
+    /* background: hsla(330, 36%, 53%, 1); */
+    background: hsla(286, 23%, 15%, 1);
+
+    background: linear-gradient(
+        270deg,
+        hsla(286, 23%, 15%, 1) 43%,
+        hsla(218, 45%, 15%, 1) 100%,
+        hsla(218, 43%, 15%, 1) 100%
+    );
+
+    background: -moz-linear-gradient(
+        270deg,
+        hsla(286, 23%, 15%, 1) 43%,
+        hsla(218, 45%, 15%, 1) 100%,
+        hsla(218, 43%, 15%, 1) 100%
+    );
+
+    background: -webkit-linear-gradient(
+        270deg,
+        hsla(286, 23%, 15%, 1) 43%,
+        hsla(218, 45%, 15%, 1) 100%,
+        hsla(218, 43%, 15%, 1) 100%
+    );
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#2A1D2E", endColorstr="#152238", GradientType=1 );
+}
+
+.customCheckbox {
+    @apply w-7 h-7 rounded-lg bg-black border-opacity-80 bg-opacity-40 border-Vichyssoise border-2  text-Vichyssoise focus:ring-0 ml-5 focus:ring-offset-0;
+}
+
+.customButton {
+    @apply bg-black bg-opacity-20 border-Vichyssoise;
+}
+
+.defaultBorder {
+    @apply border border-Vichyssoise;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -104,4 +164,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
