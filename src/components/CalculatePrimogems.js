@@ -71,7 +71,7 @@ export default function CalculatePrimogems() {
             </div>
 
             <div className="mx-10">
-                Records {":  \n"}
+                Records latest {":  \n"}
                 <div>{`Starting Date: ${startingDate}`}</div>
                 <div>{`Ending Date: ${endingDate}`}</div>
                 <div>{`No of days: ${
