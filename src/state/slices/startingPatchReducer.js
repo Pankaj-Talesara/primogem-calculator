@@ -88,17 +88,30 @@ const startingPatchSlice = createSlice({
         },
 
         revertToNotToday: (state) => {
-            const totalDays =
-                (state.patch * 10 - 33) * 42 + (state.half - 1) * 21;
+            // const totalDays =
+            //     (state.patch * 10 - 33) * 42 + (state.half - 1) * 21;
 
-            const date = new Date(2022, 11, 7 + totalDays);
+            // const date = new Date(2022, 11, 7 + totalDays);
+
+            const date = new Date(
+                bannerDuration.getDate(
+                    state.patch,
+                    state.half,
+                    "startingDate"
+                )
+            );
 
             return {
                 ...state,
 
-                // day: date.getDate(),
-                // month: date.getMonth(),
-                // year: date.getFullYear(),
+                timestamp: {
+                    day: date.getDate(),
+                    month: date.getMonth(),
+                    year: date.getFullYear(),
+
+                    hour: date.getHours(),
+                    minute: date.getMinutes(),
+                },
             };
         },
     },

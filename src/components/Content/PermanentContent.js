@@ -1,10 +1,9 @@
+import { SetDailyCommission } from "@/state/slices/contentListReducer";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
 
 export default function PermanentContent() {
     const contentList = useSelector((state) => state.contentList);
-
-    console.log("this: one: " + contentList.dailyCommission)
 
     return (
         <div className="flex flex-col px-5 m-5 bg-black bg-opacity-20 rounded-2xl h-fit w-fit">
@@ -13,21 +12,56 @@ export default function PermanentContent() {
             </span>
 
             <div className="my-2">
-                <DailyCommission />
-                <Welkin />
+                <DailyCommission
+                    contentList={contentList}
+                />
+                {/* <Welkin />
                 <BattlePass />
                 <PaimonsBargain />
-                <HoYoLAB />
+                <HoYoLAB /> */}
             </div>
         </div>
     );
 }
 
-function DailyCommission() {
+function SelectionBlock({ item, check, handleEvent }) {
+    // function handleEvent() {
+    //     console.log("l");
+    // }
+
+    return (
+        <div className="flex flex-row w-full place-content-between">
+            <label htmlFor={item} className="flex my-auto leading-8 text-xl">
+                {item}
+            </label>
+            <input
+                type="checkbox"
+                name={item}
+                id={item}
+                checked={check}
+                onChange={handleEvent}
+                className="flex my-auto w-6 h-6 rounded-md bg-black border-opacity-80 bg-opacity-40 border-Vichyssoise border-2  text-Vichyssoise focus:ring-0 ml-10 focus:ring-offset-0"
+            />
+        </div>
+    );
+}
+
+function DailyCommission({ contentList }) {
+    const dispatch = useDispatch();
+
+    function handleCommissions(e) {
+        dispatch(
+            SetDailyCommission(e.target.checked)
+        );
+    }
     return (
         <>
             <div className="w-full my-4">
-                <SelectionBlock item={"Daily Commissions"} />
+                <SelectionBlock
+                    item={"Daily Commissions"}
+                    check={contentList.dailyCommission}
+                    handleEvent={handleCommissions}
+                />
             </div>
         </>
     );
@@ -61,22 +95,6 @@ function HoYoLAB() {
     return (
         <div className="w-full my-4">
             <SelectionBlock item={"HoYoLAB Checkin"} />
-        </div>
-    );
-}
-
-function SelectionBlock({ item }) {
-    return (
-        <div className="flex flex-row w-full place-content-between">
-            <label htmlFor={item} className="flex my-auto leading-8 text-xl">
-                {item}
-            </label>
-            <input
-                type="checkbox"
-                name={item}
-                id={item}
-                className="flex my-auto w-6 h-6 rounded-md bg-black border-opacity-80 bg-opacity-40 border-Vichyssoise border-2  text-Vichyssoise focus:ring-0 ml-10 focus:ring-offset-0"
-            />
         </div>
     );
 }

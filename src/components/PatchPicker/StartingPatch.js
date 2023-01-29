@@ -14,7 +14,6 @@ import {
     revertToNotToday,
 } from "../../state/slices/startingPatchReducer";
 
-
 export default function SelectStartingPatch() {
     const startingPatch = useSelector((state) => state.startingPatch);
     const [isTodayChecked, setIsTodayChecked] = useState(false);
@@ -69,26 +68,34 @@ function StartFromToday({ isTodayChecked, setIsTodayChecked }) {
     const dispatch = useDispatch();
     const date = new Date();
 
-    function handleOnChange() {
-        setIsTodayChecked(!isTodayChecked);
-    }
+    function handleOnChange(e) {
+        setIsTodayChecked(e.target.checked);
 
-    useEffect(() => {
-        if (isTodayChecked === true) {
-            dispatch(
-                SetStartingDate()
-            );
+        console.log("um" + isTodayChecked)
+
+        if (e.target.checked === true) {
+            dispatch(SetStartingDate());
         } else {
             dispatch(revertToNotToday());
         }
+    }
 
-        console.log(
-            "StartFromToday:",
-            newDate.day,
-            newDate.month,
-            newDate.year
-        );
-    }, [isTodayChecked]);
+    // useEffect(() => {
+    //     if (isTodayChecked === true) {
+    //         dispatch(
+    //             SetStartingDate()
+    //         );
+    //     } else {
+    //         dispatch(revertToNotToday());
+    //     }
+
+    //     console.log(
+    //         "StartFromToday:",
+    //         newDate.day,
+    //         newDate.month,
+    //         newDate.year
+    //     );
+    // }, [isTodayChecked]);
 
     return (
         <div className="flex p-5 pb-0 place-content-between">

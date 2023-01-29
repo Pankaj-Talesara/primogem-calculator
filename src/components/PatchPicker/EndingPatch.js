@@ -45,8 +45,8 @@ export default function SelectEndingPatch() {
 function TillEndOfPatch({ isEndOfPatchChecked}) {
     const dispatch = useDispatch();
 
-    function handleEvent() {
-        dispatch(SetEndOfPatch(!isEndOfPatchChecked));
+    function handleEvent(e) {
+        dispatch(SetEndOfPatch(e.target.checked));
     }
 
     return (
