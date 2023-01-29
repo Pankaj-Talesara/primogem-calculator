@@ -1,4 +1,11 @@
+import { useSelector } from "react-redux";
+
+
 export default function PermanentContent() {
+    const contentList = useSelector((state) => state.contentList);
+
+    console.log("this: one: " + contentList.dailyCommission)
+
     return (
         <div className="flex flex-col px-5 m-5 bg-black bg-opacity-20 rounded-2xl h-fit w-fit">
             <span className="flex flex-col m-5 mb-0 text-xl text-center select-none text-bold">
@@ -6,22 +13,54 @@ export default function PermanentContent() {
             </span>
 
             <div className="my-2">
-                <div className="w-full my-4">
-                    <SelectionBlock item={"Daily Commissions"} />
-                </div>
-                <div className="w-full my-4">
-                    <SelectionBlock item={"Welkin"} />
-                </div>
-                <div className="w-full my-4">
-                    <SelectionBlock item={"Battle Pass"} />
-                </div>
-                <div className="w-full my-4">
-                    <SelectionBlock item={"Paimon's Bargain"} />
-                </div>
-                <div className="w-full my-4">
-                    <SelectionBlock item={"HoYoLAB Checkin"} />
-                </div>
+                <DailyCommission />
+                <Welkin />
+                <BattlePass />
+                <PaimonsBargain />
+                <HoYoLAB />
             </div>
+        </div>
+    );
+}
+
+function DailyCommission() {
+    return (
+        <>
+            <div className="w-full my-4">
+                <SelectionBlock item={"Daily Commissions"} />
+            </div>
+        </>
+    );
+}
+
+function Welkin() {
+    return (
+        <div className="w-full my-4">
+            <SelectionBlock item={"Welkin"} />
+        </div>
+    );
+}
+
+function BattlePass() {
+    return (
+        <div className="w-full my-4">
+            <SelectionBlock item={"Battle Pass"} />
+        </div>
+    );
+}
+
+function PaimonsBargain() {
+    return (
+        <div className="w-full my-4">
+            <SelectionBlock item={"Paimon's Bargain"} />
+        </div>
+    );
+}
+
+function HoYoLAB() {
+    return (
+        <div className="w-full my-4">
+            <SelectionBlock item={"HoYoLAB Checkin"} />
         </div>
     );
 }

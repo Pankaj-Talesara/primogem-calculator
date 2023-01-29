@@ -48,7 +48,7 @@ export default function SelectStartingPatch() {
                     leaveTo="h-0 -translate-y-6 opacity-0 overflow-hidden"
                 >
                     <div className="">
-                        <span className="block text-Vichyssoise text-xs mx-1 pt-5  select-none">
+                        <span className="block text-Vichyssoise text-xs mx-1 pt-5 select-none">
                             Select Starting Patch
                         </span>
                     </div>
@@ -76,11 +76,7 @@ function StartFromToday({ isTodayChecked, setIsTodayChecked }) {
     useEffect(() => {
         if (isTodayChecked === true) {
             dispatch(
-                SetStartingDate({
-                    day: date.getUTCDate(),
-                    month: date.getUTCMonth(),
-                    year: date.getFullYear(),
-                })
+                SetStartingDate()
             );
         } else {
             dispatch(revertToNotToday());
